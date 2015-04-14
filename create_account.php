@@ -14,6 +14,12 @@ VALUES ('$fname','$lname','$pword')";
 
 if (mysqli_query($mysqli,$sql)) {
   echo "<br>User account created.";
+  session_start();
+  $_SESSION['fname'] = $fname;
+  $_SESSION['lname'] = $lname;
+  $_SESSION['id'] = $mysqli->insert_id;
+
+  header( 'Location: /index.php');
 } else {
   echo "Error creating user: " . mysqli_error($mysqli);
 }
