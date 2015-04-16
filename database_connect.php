@@ -7,19 +7,19 @@ $username='atbr227';
 $password ='thisisourpassword';
 
 
-
-$mysqli = new MySQLi($servername,$username,$password,'test');
+$dbName = 'test';
+$mysqli = new MySQLi($servername,$username,$password,$dbName);
 
 if( mysqli_connect_errno() ) {
     echo mysqli_connect_error();
 } else{
-  echo('connected to db...');
+  echo "<font color = \"white\"> connected to db...</font>";
 }
 
 //Switch to our database.
 $sql = "use atbr227";
 if (mysqli_query($mysqli,$sql)) {
-   echo "Database selected.";
+   echo "<font color = \"white\"> Database selected. </font>";
 } else {
   echo "Error creating database: ". mysqli_error($mysqli);
 }
