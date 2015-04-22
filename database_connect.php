@@ -13,13 +13,13 @@ $mysqli = new MySQLi($servername,$username,$password,$dbName);
 if( mysqli_connect_errno() ) {
     echo mysqli_connect_error();
 } else{
-  echo "<font color = \"white\"> connected to db...</font>";
+  //echo "<font color = \"white\"> connected to db...</font>";
 }
 
 //Switch to our database.
 $sql = "use atbr227";
 if (mysqli_query($mysqli,$sql)) {
-   echo "<font color = \"white\"> Database selected. </font>";
+   //echo "<font color = \"white\"> Database selected. </font>";
 } else {
   echo "Error creating database: ". mysqli_error($mysqli);
 }

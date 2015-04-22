@@ -72,11 +72,11 @@ function showCart(){
 	$rowcount=mysqli_num_rows($result);
 
 	if (!$rowcount){
-		echo "<h2> No items in cart. Go by stuff. </h2></br>";
+		return 0;
 	}
 	else
 	{
-		echo "<table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">";
+		echo "<table class=\"table-prod\" cellspacing=\"0\" cellpadding=\"2\">";
 	  $fieldNames = mysqli_fetch_fields($result);
 
 	  echo "<tr>
@@ -84,7 +84,7 @@ function showCart(){
 	  <th>PID</th>
 	  <th>Price</th>
 	  <th>Quantity</th>
-
+	  <th>Purchase</th>
 
 	  </tr>";
 	 
@@ -114,7 +114,7 @@ function showCart(){
 
 	  echo "</table>";
 	}
-
+	return 1;
 }
 
 ?>

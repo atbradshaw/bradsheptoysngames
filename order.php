@@ -6,13 +6,13 @@
        time_of_pur DATETIME,
 */
 
-function addToOrder($pid, $quant){
+function addToOrder($pid, $quant, $date){
 	global $mysqli;
 
 	$cid = $_SESSION['id'];
 
-	$sql = "INSERT INTO In_Order(pid, cid, quantity, status)
-				VALUES ('$pid','$cid','$quant','pending')";
+	$sql = "INSERT INTO In_Order(pid, cid, quantity, status, time_of_pur)
+				VALUES ('$pid','$cid','$quant','pending','$date')";
 
 	if (mysqli_query($mysqli,$sql)) {
 		 // header( 'Location: index.php');
@@ -44,24 +44,17 @@ function shipOrder($ordid, $pid, $quant){
           SET status = 'shipped'
           WHERE ordid = $ordid";
 
-  if (mysqli_multi_query($mysqli,$sql)) {
-     
-      echo "</br> Shipped";
-  } else {
-    echo "Error shipping order: " . mysqli_error($mysqli);
+          if (mysqli_multi_query($mysqli,$sql)) {
+             
+              echo "</br> Shipped";
+          } else {
+            echo "Error shipping order: " . mysqli_error($mysqli);
+          }
   }
-
-
-
-
-  }
-  else
-  {
+  else {
+    // add shipping form
     echo "</br> Not Enough Item";
   }
-
-  
-
 }
 
 function showOrder(){
@@ -77,12 +70,11 @@ function showOrder(){
   	$rowcount=mysqli_num_rows($result);
 	if(!$rowcount)
   	{
-    	echo "</br> No Orders";
-    	return;
+    	return 0;
  	}
 
  	// show Customer table
-  echo "<table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">";
+  echo "<table class=\"table-prod\" border=\"1\" cellspacing=\"0\" cellpadding=\"2\">";
   $fieldNames = mysqli_fetch_fields($result);
 
   echo "<tr>";
@@ -105,18 +97,32 @@ function showOrder(){
   } 
 
   echo "</table>";
-
+  return 1;
 }
 
-function showAllOrders ()
+function showAllOrders ($by_date)
 {
   global $mysqli;
 
-  //$cid = $_SESSION['id'];
+    $sql;
+    $end_date;
+    $start_date;
 
-  $sql = "SELECT * FROM In_Order NATURAL JOIN Product
+  if($by_date != "all"){
+    date_default_timezone_set('America/New_York');
+    $end_date = date("Y-m-d H:i:s");
+    echo "$end_date</br>";
+    $start_date = date("Y-m-d H:i:s", strtotime($end_date . "-1" . "$by_date"));
+    echo "$start_date";
+
+    $sql = "SELECT * FROM In_Order NATURAL JOIN Product
+            WHERE time_of_pur >= '$start_date' and time_of_pur < '$end_date'
+            ORDER BY cid, pid";
+  }
+  else{
+    $sql = "SELECT * FROM In_Order NATURAL JOIN Product
           ORDER BY cid, pid";
-      
+  }
   $result = mysqli_query($mysqli,$sql);
 
   // row count
@@ -135,7 +141,7 @@ function showAllOrders ()
 
 
   // show Customer table
-  echo "<table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">";
+  echo "<table class='table-prod' border=\"1\" cellspacing=\"0\" cellpadding=\"2\">";
 
   echo "<tr>";
     echo" <th> CID </th>";
@@ -146,8 +152,6 @@ function showAllOrders ()
     echo" <th> Status </th>";
     echo" <th> Ship </th>";
   echo "</tr>";
-
-
 
 $temp_cid= mysqli_fetch_assoc($cid_result);
   echo"<tr> <td> {$temp_cid['cid']} </td><td colspan=\"5\"></td>";
@@ -173,7 +177,7 @@ $temp_cid= mysqli_fetch_assoc($cid_result);
           $ordid = $row['ordid'];
           $pid = $row['pid'];
           $quant = $row['quantity'];
-          echo"<td><button  onClick='location.href=\"?orders=1&ordid=$ordid&pid=$pid&quant=$quant\"' >Ship</button></td>";
+          echo"<td><button  onClick='location.href=\"staff_index.php?ordid=$ordid&pid=$pid&quant=$quant\"' >Ship</button></td>"; 
         }
         else{
           echo "<td></td>";

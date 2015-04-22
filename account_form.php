@@ -1,51 +1,95 @@
+<!-- Home Page -->
+<?php
+  session_start();
+  include 'header_footer.php';
+  require_once('database_connect.php');
+?>
+
+<!DOCTYPE HTML>
+
+<html>
+  <!-- bacjground color -->
+  <body>
+
+    <?php
+      // add a header
+      addHeader();
+    ?>
+
+    <div class="empty-50"> </div>
+    <div class="empty-20"> </div>
+
+    <dir class="title-text"> BradShep Toys n' Games </dir>
+
+    <div class="empty-100" style="background:#579574; top: -80px; font-size:3em; color:#ffffff;">
+       <div style="position:relative; top:20px">
+    <?php
+    if (isset($_GET['form_type'])){
+      if($_GET['form_type'] == 'customer'){
+        echo  'Account Creator';
+      }
+      else {
+        echo 'Staff Log In';
+      }
+    }
+    ?>
+
+    </div>
+    </div>
+
+    <?php
+    if (isset($_GET['form_type'])){
+      if($_GET['form_type'] == 'customer'){
+        customerCreateAccountForm();
+      }
+      else {
+        staffLogInForm();
+      }
+    }
+    ?>
+
+
+
+
+
+<?php
+  // add a footer
+  addFooter();
+?>
+
+    </body>
+
+
+</html>
+
+
 <?php 
-session_start();
-// login form
-if (isset($_GET['login']) and $_GET['login'] == 1){
-  echo
-    '<form action="create_account.php"method="get">
-      <h1>Login to your account!</h1>
-          Username: <input type="text" name = "uname"><br>
-          Password:   <input type="password"name = "pword"><br>';
-  if (isset($_GET['staff'])){
-      echo '<input type="hidden" name="staff" value=1>';
-  }
 
-  echo '<input type="submit">
-    </form>';
-  
+function customerCreateAccountForm(){
+  echo  '<div class="account-form-box">
 
+          <form class="account-form-customer" action="create_account.php" method="get">
+            <input class="input-search" type="text" name = "fname" placeholder="First Name"></br></br>
+            <input class="input-search" type="text" name = "lname" placeholder="Last Name"></br></br>
+            <input class="input-search" type="text" name = "uname" placeholder="User Name"></br></br>
+            <input class="input-search" type="password"name = "pword" placeholder="Password"></br> </br>
+            <input class="logInBtn" style="position: relative; left:-100px;" type="Submit">
+            <button type="button" class="cancelBtn" onClick=\'location.href="index.php"\' >Cancel</button>
+          </form>
 
-  if (isset($_GET['baduser'])){
-    if ($_GET['baduser']){
-      echo "</br>User not found.</br> Please check your info or ";
-    }
-  }
-
-    if (!isset($_GET['staff'])){
-      echo " <button  onClick='location.href=\"account_form.php?login=0\"' >Create Account</button>"; 
-    }
-
+        </div>';
 }
 
-// create account
-else{
-  echo  '<form action="create_account.php"method="get">
-      <h1>Create an account!</h1>
-          First name: <input type="text" name = "fname"><br>
-          Last  name: <input type="text" name = "lname"><br>
-          Username: <input type="text" name = "uname"><br>
-          Password: <input type="password"name = "pword"><br> 
-          <input type="hidden" name="new"> 
-      <input type="submit">
-    </form>';
+function staffLogInForm(){
+  echo  '<div class="account-form-box">
+          <form class="account-form-customer" action="staff_login.php" method="get">
+            <input class="input-search" type="text" name = "uname" placeholder="User Name"></br></br>
+            <input class="input-search" type="password"name = "pword" placeholder="Password"></br> </br>
+            <input class="logInBtn" style="position: relative; left:-100px;" type="Submit">
+            <button type="button" class="cancelBtn" onClick=\'location.href="logout.php"\' >Cancel</button>
+          </form>
 
-  echo '</br> Already have an account ';
-
-  echo" <button  onClick='location.href=\"?login=1\"' > login</button>"; 
+        </div>';
 }
-
-echo "</br></br> <button  onClick='location.href=\"index.php\"' >Home</button>";
-
 
 ?>
