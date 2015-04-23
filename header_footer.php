@@ -22,7 +22,7 @@ function createHeader($type){
             	<fieldset class = "blank">
 	                <input type="text" class="inputs" placeholder="User Name" name="uname">
 	                <input type="text" class="inputs" placeholder="Password" name="pword">
-	                <button type="submit" class="logInBtn">Sign in</button>
+	                <button type="submit" class="logInBtn" style="border-radius: 5px">Sign In</button>
             	</fieldset>
           	  </form>
           	  </div>';
@@ -35,7 +35,7 @@ function createHeader($type){
         $cart_cnt = $_SESSION['cart_cnt'];
 
     	echo '<div class="login-form" style="width:400px">
-    			<button type="submit" class="logOutBtn" onclick="location.href=\'logout.php\'">Sign Out</button>
+    			<button type="submit" class="logOutBtn" style="border-radius: 5px" onclick="location.href=\'logout.php\'">Sign Out</button>
     			<button type="submit" class="showCartBtn" onclick="location.href=\'show_cart.php\'">Cart</button>
     			<div class="cartItemCnt">';
                 echo "$cart_cnt";

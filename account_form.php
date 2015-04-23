@@ -91,8 +91,8 @@ function customerCreateAccountForm(){
             <input class="input-search" type="text" name = "lname" placeholder="Last Name"></br></br>
             <input class="input-search" type="text" name = "uname" placeholder="User Name"></br></br>
             <input class="input-search" type="password"name = "pword" placeholder="Password"></br> </br>
-            <input class="logInBtn" style="position: relative; left:-100px;" type="Submit">
-            <button type="button" class="cancelBtn" onClick=\'location.href="index.php"\' >Cancel</button>
+            <input class="logInBtn" style="position: relative; width:200px; left:-10px;" type="Submit">
+            <button type="button" class="cancelBtn" style="right:-10px; width:200px" onClick=\'location.href="index.php"\' >Cancel</button>
           </form>
 
         </div>';
@@ -103,8 +103,8 @@ function staffLogInForm(){
           <form  action="staff_login.php" method="get">
             <input class="input-search" type="text" name = "uname" placeholder="User Name"></br></br>
             <input class="input-search" type="password"name = "pword" placeholder="Password"></br> </br>
-            <input class="logInBtn" style="position: relative; left:-100px;" type="Submit">
-            <button type="button" class="cancelBtn" onClick=\'location.href="logout.php"\' >Cancel</button>
+            <input class="logInBtn" style="position: relative; width:200px; left:-10px;" type="Submit">
+            <button type="button" class="cancelBtn" style="right:-10px; width:200px" onClick=\'location.href="logout.php"\' >Cancel</button>
           </form>
 
         </div>';

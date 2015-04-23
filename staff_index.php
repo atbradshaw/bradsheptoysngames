@@ -51,7 +51,7 @@ include 'header_footer.php';
   <div class="bar" style="height:70px; background:#202020; top:0px; "> 
 
     <!-- Button Box -->
-    <div class="box" style=" height:50px; top:10px; z-index=1000; width:1000px">
+    <div class="box" style=" height:50px; top:15px; z-index=1000; width:1000px">
 
       <!-- Buttons -->
       <?php if ($_SESSION['user_type'] == 'staff'){
@@ -108,12 +108,12 @@ include 'header_footer.php';
   <!-- Order By Date Buttons -->
   <?php
     if(isset($_GET['type']) and $_GET['type'] == 'orders_by_date'){
-      echo '<div class="bar" style="height:60px; background:#ffffff; bottom:0px">';
+      echo '<div class="bar" style="height:60px; background:#0C3F5B; bottom:0px">';
 
       echo" <div class=\"box\" style=\"font-size:50px; top:10px; height: 40px; width:500px;\">
-              <button class='staffBtn' style='left:0px' onclick=\"location.href='staff_index.php?type=orders_by_date&span=weeks'\">Week</button>
-              <button class='staffBtn' style='right:190px' onclick=\"location.href='staff_index.php?type=orders_by_date&span=months'\">Month</button>
-              <button class='staffBtn' style='right:0px' onclick=\"location.href='staff_index.php?type=orders_by_date&span=years'\">Year</button>
+              <button class='staffDateBtn' style='left:0px' onclick=\"location.href='staff_index.php?type=orders_by_date&span=weeks'\">Week</button>
+              <button class='staffDateBtn' style='right:190px' onclick=\"location.href='staff_index.php?type=orders_by_date&span=months'\">Month</button>
+              <button class='staffDateBtn' style='right:0px' onclick=\"location.href='staff_index.php?type=orders_by_date&span=years'\">Year</button>
             </div>";
       
       echo'</div>';

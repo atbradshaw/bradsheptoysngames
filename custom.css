@@ -106,11 +106,11 @@ html, body {
           
  .inputs{
     padding: 8px;
-    border-radius: 3px;
+    border-radius: 5px;
     border: 1px solid #CCC;
     background: #ffffff;
     width: 200px;
-    color: #00ffff;
+    color: #777777;
     font-size: 15px;
 }
 
@@ -118,34 +118,33 @@ html, body {
 	outline: 0px;
     border: 1px solid #CCC;
     background: #ffffff;
-    color: #000099;
     font-size: 15px;
 }
 
-.inputs:hover {
-	background: #ffffff;
-}
 
 /*------ Search Box ----------*/
  .input-search{
     padding: 8px;
-    border-radius: 3px;
-    border: 2px solid #3583C4;
+    border-radius: 20px;
+    border: 2px solid #CCC;
     background: #ffffff;
     width: 400px;
     height:20px;
-    color: red;
+    color: #777777;
+    font-size: 20px;
+    text-align: center;
 }
 
 .input-search:focus {
 	outline: 0px;
-    border: 1px solid #CCC;
+    border: 2px solid #CCC;
     background: #ffffff;
     color: #777777;
 }
 
 .input-search:hover {
 	background: #ffffff;
+	border: 2px solid #aaaaaa;
 }
 
 /*-------- Name --------*/
@@ -154,12 +153,12 @@ html, body {
 	min-width: 100px;
 	font-family: arial;
 	color: #ffffff;
-	padding: 20px; 
+	padding: 16px; 
 	border: 1px solid #505050;
 	margin: 0px;
 	background: #505050;
 	text-align: center;
-	font-size: 1em;
+	font-size: 22px;
 	top:0px;
 	right: 380px;
 }
@@ -170,9 +169,9 @@ html, body {
 	right: 200px;
 	top: 10px;
 	background-color:#707070;
-	-moz-border-radius:8px;
-	-webkit-border-radius:8px;
-	border-radius:8px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
 	border:1px solid #606060;
 	display:inline-block;
 
@@ -187,11 +186,10 @@ html, body {
 /*-------- Button --------*/
 .staffBtn{
 	position: absolute;
-	background-color:#085689;
+	background-color:#303030;
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px;
 	border-radius:8px;
-	border:1px solid #085689;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -201,7 +199,27 @@ html, body {
 	text-decoration:none;
 }
 .staffBtn:hover {
-	background-color:#3583C4;
+	background-color:#ffffff;
+	color: #0C3F5B;
+}
+
+.staffDateBtn{
+	position: absolute;
+	background-color:#114E77;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:20px;
+	padding:8px 20px;
+	text-decoration:none;
+}
+.staffDateBtn:hover {
+	background-color:#ffffff;
+	color: #303030;
 }
 
 .tableBtn{
@@ -228,9 +246,9 @@ html, body {
 	right: 280px;
 	top: 10px;
 	background-color:#44c767;
-	-moz-border-radius:8px;
-	-webkit-border-radius:8px;
-	border-radius:8px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
 	border:1px solid #18ab29;
 	display:inline-block;
 	cursor:pointer;
@@ -248,11 +266,10 @@ html, body {
 	position: fixed;
 	right: 25px;
 	top: 10px;
-	background-color:#bb0000;
+	background-color:#CE132E;
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px;
 	border-radius:8px;
-	border:1px solid #770000;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -262,15 +279,14 @@ html, body {
 	text-decoration:none;
 }
 .logOutBtn:hover {
-	background-color:#880000;
+	background-color:#870B1D;
 }
 
 .logInBtn {
-	background-color:#44c767;
+	background-color:#13CE63;
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px;
 	border-radius:8px;
-	border:1px solid #18ab29;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -280,7 +296,8 @@ html, body {
 	text-decoration:none;
 }
 .logInBtn:hover {
-	background-color:#5cbf2a;
+	background-color:#0FAA51;
+
 }
 
 .signUpBtn {
@@ -291,7 +308,6 @@ html, body {
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px;
 	border-radius:8px;
-	border: 0px;
 	display:inline-block;
 	cursor:pointer;
 	color:#3583C4;
@@ -303,7 +319,7 @@ html, body {
 	z-index: 20000;
 }
 .signUpBtn:hover {
-	background:#61a5FF;
+	background:#114E77;
 	color: #ffffff;
 }
 
