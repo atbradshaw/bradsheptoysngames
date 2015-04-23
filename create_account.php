@@ -10,8 +10,8 @@ $lname = $_GET["lname"];
 $uname = $_GET["uname"];
 $pword = $_GET["pword"];
 
-$sql = "INSERT INTO Customer(first_name,last_name,user_name,password)
-VALUES ('$fname','$lname','$uname','$pword')";
+$sql = "INSERT INTO Customer(first_name,last_name,user_name,password,type)
+VALUES ('$fname','$lname','$uname','$pword','customer')";
 
 // insert the user into the db
 if (mysqli_query($mysqli,$sql)) {

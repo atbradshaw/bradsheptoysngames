@@ -6,15 +6,15 @@ include 'products.php';
 function addBaseStaff() {
   global $mysqli;
   $base_staff = [
-  ['Henry','Harold','HH',0,'HHpass'],
-  ['Tim','Tiff','TT',0,'TTpass'],
-  ['Barb','Bills','BB',1,'BBpass'],
-  ['Carl','Cramer','CC',1,'CCpass'],
+  ['Henry','Harold','HH','staff','HHpass'],
+  ['Tim','Tiff','TT','staff','TTpass'],
+  ['Barb','Bills','BB','manager','BBpass'],
+  ['Carl','Cramer','CC','staff','CCpass'],
 
   ];
 
   foreach ($base_staff as $b){
-    $sql = "INSERT INTO Staff(first_name, last_name, user_name, is_manager, password)
+    $sql = "INSERT INTO User(first_name, last_name, user_name, type, password)
         VALUES ('$b[0]','$b[1]','$b[2]','$b[3]','$b[4]')";
 
     if (mysqli_query($mysqli,$sql)) {

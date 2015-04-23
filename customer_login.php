@@ -30,7 +30,6 @@ $_SESSION['uname'] = $uname;
 $_SESSION['fname'] = $row["first_name"];
 $_SESSION['lname'] = $row["last_name"];
 $_SESSION['id'] = $row["cid"];
-
 $_SESSION['user_type'] = "customer";
 
 // return to home page

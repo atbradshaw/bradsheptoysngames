@@ -10,7 +10,7 @@ $uname = $_GET["uname"];
 $pword = $_GET["pword"];
 
 // find user according to info
-$sql = "SELECT * FROM Staff
+$sql = "SELECT * FROM User
 		WHERE user_name = '$uname' AND password = '$pword'";
 
 $result = mysqli_query($mysqli,$sql);
@@ -30,15 +30,8 @@ $_SESSION['uname'] = $uname;
 $_SESSION['fname'] = $row["first_name"];
 $_SESSION['lname'] = $row["last_name"];
 $_SESSION['id'] = $row["sid"];
+$_SESSION['user_type'] = $row['type'];
 
-// set user type (staff/manager)
-if ($row['is_manager']){
-	$_SESSION['user_type'] = "manager";
-}
-else
-{
-	$_SESSION['user_type'] = "staff";
-}
 
 // return to home page
 echo"<script>location.href='staff_index.php'</script>";

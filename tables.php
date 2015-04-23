@@ -6,35 +6,22 @@ function createTables(){
   global $mysqli;
 
   //Customer table
-  $sql = "CREATE TABLE IF NOT EXISTS Customer(
-       first_name VARCHAR(30),
-       last_name VARCHAR(30),
-       user_name VARCHAR(30),
-       password VARCHAR(20),
-       cid INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY
+  $sql = "CREATE TABLE IF NOT EXISTS User(
+       first_name VARCHAR(30) NOT NULL,
+       last_name VARCHAR(30) NOT NULL,
+       user_name VARCHAR(30) NOT NULL UNIQUE,
+       password VARCHAR(20) NOT NULL,
+       type ENUM('manager','customer','staff'),
+       id INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY
        )";
 
   if (mysqli_query($mysqli,$sql)) {
-     echo "<br/>Customer table created.";
+     echo "<br/>User table created.";
   } else {
     echo "Error creating table: " . mysqli_error($mysqli);
   }
 
-  //Staff Table
-  $sql = "CREATE TABLE IF NOT EXISTS Staff(
-       first_name VARCHAR(30),
-       last_name VARCHAR(30),
-       user_name VARCHAR(20) UNIQUE,
-       is_manager BOOLEAN,
-       password VARCHAR(20),
-       sid INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY
-       )";
 
-  if (mysqli_query($mysqli,$sql)) {
-     echo "<br/>Staff table created.";
-  } else {
-    echo "Error creating table: " . mysqli_error($mysqli);
-  }
 
   //Product Table
   $sql = "CREATE TABLE IF NOT EXISTS Product(
@@ -55,12 +42,12 @@ function createTables(){
   //In_Order Table
   $sql = "CREATE TABLE IF NOT EXISTS In_Order(
        pid INT(8) UNSIGNED,
-       cid INT(8) UNSIGNED,
+       id INT(8) UNSIGNED,
        quantity INT(3),
        status ENUM('pending','shipped'),
        time_of_pur DATETIME,
        FOREIGN KEY (pid) REFERENCES Product(pid),
-       FOREIGN KEY (cid) REFERENCES Customer(cid),
+       FOREIGN KEY (id) REFERENCES User(id),
        ordid INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY
        )";
 
@@ -73,11 +60,11 @@ function createTables(){
   //In cart
   $sql = "CREATE TABLE IF NOT EXISTS In_Cart(
        pid INT(8) UNSIGNED,
-       cid INT(8) UNSIGNED,
+       id INT(8) UNSIGNED,
        count INT(4),
        FOREIGN KEY (pid) REFERENCES Product(pid),
-       FOREIGN KEY (cid) REFERENCES Customer(cid),
-       PRIMARY KEY(pid,cid)
+       FOREIGN KEY (id) REFERENCES User(id),
+       PRIMARY KEY(pid,id)
        )";
 
   if (mysqli_query($mysqli,$sql)) {
@@ -136,7 +123,7 @@ function printTable($tableName) {
 
 function removeTables(){
   global $mysqli;
-  $sql = "DROP TABLE IF EXISTS Customer,Staff,Product,In_Order,In_Cart";
+  $sql = "DROP TABLE IF EXISTS In_Order,In_Cart,User,Product";
 
   if (mysqli_query($mysqli,$sql)) {
      echo "<br/>Tables deleted.";
