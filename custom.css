@@ -264,17 +264,18 @@ html, body {
 
 .logOutBtn {
 	position: fixed;
-	right: 25px;
-	top: 10px;
+	right:0px;
+	top:0px;
+	height:60px;
 	background-color:#CE132E;
-	-moz-border-radius:8px;
-	-webkit-border-radius:8px;
-	border-radius:8px;
+	-moz-border-radius:0px;
+	-webkit-border-radius:0px;
+	border-radius:0px;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:arial;
-	font-size:17px;
+	font-size:18px;
 	padding:8px 27px;
 	text-decoration:none;
 }
@@ -284,14 +285,17 @@ html, body {
 
 .logInBtn {
 	background-color:#13CE63;
-	-moz-border-radius:8px;
-	-webkit-border-radius:8px;
-	border-radius:8px;
+	right:0px;
+	top:0px;
+	height:60px;
+	-moz-border-radius:0px;
+	-webkit-border-radius:0px;
+	border-radius:0px;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:arial;
-	font-size:17px;
+	font-size:18px;
 	padding:8px 27px;
 	text-decoration:none;
 }
@@ -302,8 +306,8 @@ html, body {
 
 .signUpBtn {
 	position: absolute;
-	right: 24px;
-	top:70px;
+	right: 8px;
+	top:80px;
 	background:#ffffff;
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px;
@@ -344,26 +348,44 @@ html, body {
 	color: #505050;
 }
 
-.cancelBtn {
-	position: relative;
-	
-	background-color:#bb0000;
-	-moz-border-radius:8px;
-	-webkit-border-radius:8px;
-	border-radius:8px;
-	border:1px solid #770000;
+
+.submitBtn {
+	background-color:#13CE63;
+	right:0px;
+	top:0px;
+	height:50px;
+	border-radius:10px 0px 0px 10px;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:arial;
-	font-size:17px;
+	font-size:20px;
 	padding:8px 27px;
 	text-decoration:none;
-	z-index: 10000;
+}
+.submitBtn:hover {
+	background-color:#0FAA51;
+}
+
+.cancelBtn {
+	background-color:#CE132E;
+	right:0px;
+	top:0px;
+	height:50px;
+	border-radius:0px 10px 10px 0px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:20px;
+	padding:8px 27px;
+	text-decoration:none;
 }
 .cancelBtn:hover {
-	background-color:#880000;
+	background-color:#870B1D;
 }
+
+
 
 .staffLabel {
 	position: fixed;

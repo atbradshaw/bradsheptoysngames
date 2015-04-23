@@ -11,7 +11,7 @@ $pword = $_GET["pword"];
 
 // find user according to info
 $sql = "SELECT * FROM User
-		WHERE user_name = '$uname' AND password = '$pword'";
+		WHERE user_name = '$uname' AND password = '$pword' AND (type = 'staff' OR type = 'manager')";
 
 $result = mysqli_query($mysqli,$sql);
 
