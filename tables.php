@@ -42,6 +42,29 @@ function createTables(){
     echo "Error creating table: " . mysqli_error($mysqli);
   }
 
+
+  /*
+  //Product Trigger
+  $sql = "CREATE TRIGGER priceBounds AFTER UPDATE ON Product
+          FOR EACH ROW BEGIN
+              IF NEW.price <0.01 THEN
+                 UPDATE Product SET price=0 WHERE price = NEW.price;
+              END IF;
+          END;
+       ";
+
+  if (mysqli_query($mysqli,$sql)) {
+     echo "<br/>Product trigger created.";
+  } else {
+    echo "Error creating table: " . mysqli_error($mysqli);
+  }
+  */
+
+
+
+
+
+
   //In_Order Table
   $sql = "CREATE TABLE IF NOT EXISTS In_Order(
        pid INT(8) UNSIGNED,
@@ -76,6 +99,9 @@ function createTables(){
   } else {
     echo "Error creating table: " . mysqli_error($mysqli);
   }
+
+
+
 }
 
 

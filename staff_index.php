@@ -30,7 +30,8 @@ include 'header_footer.php';
   
     // update stock
     if (isset($_GET['update']) and $_GET['update'] == 'stock' and isset($_GET['pid']) and isset($_GET['stock'])){
-        updateProductStock($_GET['pid'], $_GET['stock']);
+        $stock = ($_GET['stock']>=0) ? $_GET['stock'] : 0;
+        updateProductStock($_GET['pid'], $stock);
         echo"<script>location.href='staff_index.php?type=update_stock'</script>";
     }
 

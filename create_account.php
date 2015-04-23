@@ -5,14 +5,14 @@ session_start();
 require_once('database_connect.php');
 
 
-echo "here";
+
 // get inputted user info
 $fname = !empty($_GET["fname"]) ? $_GET["fname"] : null;
 $lname = !empty($_GET["lname"]) ? $_GET["lname"] : null;
 $uname = !empty($_GET["uname"]) ? $_GET["uname"] : null;
 $pword = !empty($_GET["pword"]) ? $_GET["pword"] : null;
 
-echo "here";
+
 
 
 //$sql = "INSERT INTO User(first_name,last_name,user_name,password,type)
@@ -40,7 +40,7 @@ if ($sql->execute()){
   return;
 }
 else {
-  $_SESSION['error'] = "Error creating user." ;//. mysqli_error($mysqli);
+  $_SESSION['error'] = "Error creating user." . mysqli_error($mysqli);
   echo"<script>location.href='account_form.php?form_type=customer'</script>";
 }
 

@@ -55,6 +55,7 @@
     <?php
     if (isset($_GET['form_type'])){
       if($_GET['form_type'] == 'customer'){
+
         customerCreateAccountForm();
       }
       else {
@@ -81,16 +82,16 @@
 // account form for a customer
 function customerCreateAccountForm(){
   if(isset($_SESSION['error'])) {
-    echo "Error Creating Account";
+    echo $_SESSION['error'];
     unset($_SESSION['error']);
   }
   echo  '<div class="box" style="top:20px; height:270px">
 
           <form action="create_account.php" method="get">
-            <input class="input-search" type="text" name = "fname" placeholder="First Name"></br></br>
-            <input class="input-search" type="text" name = "lname" placeholder="Last Name"></br></br>
-            <input class="input-search" type="text" name = "uname" placeholder="User Name"></br></br>
-            <input class="input-search" type="password"name = "pword" placeholder="Password"></br> </br>
+            <input class="input-search" type="text" name = "fname" placeholder="First Name" required></br></br>
+            <input class="input-search" type="text" name = "lname" placeholder="Last Name" required></br></br>
+            <input class="input-search" type="text" name = "uname" placeholder="User Name" required></br></br>
+            <input class="input-search" type="password"name = "pword" placeholder="Password" required></br> </br>
             <input class="submitBtn" style="position: relative; width:205px; left:0px;" type="Submit">
             <button type="button" class="cancelBtn" style="right:0px; width:205px" onClick=\'location.href="index.php"\' >Cancel</button>
           </form>
@@ -101,8 +102,8 @@ function customerCreateAccountForm(){
 function staffLogInForm(){
   echo  '<div class="box" style="top:20px; height:155px">
           <form  action="staff_login.php" method="get">
-            <input class="input-search" type="text" name = "uname" placeholder="User Name"></br></br>
-            <input class="input-search" type="password"name = "pword" placeholder="Password"></br> </br>
+            <input class="input-search" type="text" name = "uname" placeholder="User Name" required></br></br>
+            <input class="input-search" type="password"name = "pword" placeholder="Password" required></br> </br>
             <input class="submitBtn" style="position: relative; width:205px; left:0px;" type="Submit">
             <button type="button" class="cancelBtn" style="right:0px; width:205px" onClick=\'location.href="logout.php"\' >Cancel</button>
           </form>
