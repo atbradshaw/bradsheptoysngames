@@ -26,7 +26,8 @@ if (mysqli_query($mysqli,$sql)) {
   return;
 }
 else {
-  echo "Error creating user: " . mysqli_error($mysqli);
+  $_SESSION['error'] = "Error creating user." ;//. mysqli_error($mysqli);
+  echo"<script>location.href='account_form.php?form_type=customer'</script>";
 }
 
 ?>

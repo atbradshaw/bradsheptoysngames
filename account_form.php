@@ -66,13 +66,19 @@
 <?php 
 
 function customerCreateAccountForm(){
+ 
+if(isset($_SESSION['error'])) {
+   echo "test";
+   unset($_SESSION['error']);
+}
+
   echo  '<div class="account-form-box">
 
           <form class="account-form-customer" action="create_account.php" method="get">
-            <input class="input-search" type="text" name = "fname" placeholder="First Name"></br></br>
-            <input class="input-search" type="text" name = "lname" placeholder="Last Name"></br></br>
-            <input class="input-search" type="text" name = "uname" placeholder="User Name"></br></br>
-            <input class="input-search" type="password"name = "pword" placeholder="Password"></br> </br>
+            <input class="input-search" type="text" name = "fname" placeholder="First Name" required></br></br>
+            <input class="input-search" type="text" name = "lname" placeholder="Last Name" required></br></br>
+            <input class="input-search" type="text" name = "uname" placeholder="User Name" required></br></br>
+            <input class="input-search" type="password"name = "pword" placeholder="Password" required></br> </br>
             <input class="logInBtn" style="position: relative; left:-100px;" type="Submit">
             <button type="button" class="cancelBtn" onClick=\'location.href="index.php"\' >Cancel</button>
           </form>
@@ -83,9 +89,9 @@ function customerCreateAccountForm(){
 function staffLogInForm(){
   echo  '<div class="account-form-box">
           <form class="account-form-customer" action="staff_login.php" method="get">
-            <input class="input-search" type="text" name = "uname" placeholder="User Name"></br></br>
-            <input class="input-search" type="password"name = "pword" placeholder="Password"></br> </br>
-            <input class="logInBtn" style="position: relative; left:-100px;" type="Submit">
+            <input class="input-search" type="text" name = "uname" placeholder="User Name" required></br></br>
+            <input class="input-search" type="password"name = "pword" placeholder="Password" required></br> </br>
+            <input class="logInBtn" style="position: relative; left:-100px;" type="Submit" required>
             <button type="button" class="cancelBtn" onClick=\'location.href="logout.php"\' >Cancel</button>
           </form>
 
