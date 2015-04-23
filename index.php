@@ -58,7 +58,7 @@
     <div class="box" style="font-size:30px; top:200px; width:1000px;">
       We are a super cool store that has all of the amazing products
       that you and your family need. With new shipments coming in
-      all the time, our delivery rates are garunteed premium. 
+      all the time, our delivery rates are guaranteed premium. 
     </div>
   </div>
 

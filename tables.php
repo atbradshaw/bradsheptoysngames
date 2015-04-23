@@ -28,9 +28,12 @@ function createTables(){
        pid INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
        pname VARCHAR(30),
        price FLOAT(5),
+       promo_rate FLOAT(3),
        type ENUM('toy','game'),
        stock INT(10),
-       promo_rate FLOAT(3)
+       CHECK (stock >=0),
+       CHECK (price >= 0.01),
+       CHECK(promo_rate >0 AND promo_rate <= 1)
        )";
 
   if (mysqli_query($mysqli,$sql)) {
@@ -46,6 +49,7 @@ function createTables(){
        quantity INT(3),
        status ENUM('pending','shipped'),
        time_of_pur DATETIME,
+       CHECK(quantity >=1),
        FOREIGN KEY (pid) REFERENCES Product(pid),
        FOREIGN KEY (id) REFERENCES User(id),
        ordid INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY
