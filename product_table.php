@@ -21,6 +21,7 @@ function searchProducts($field, $prod){
   }
 
   // show Customer table
+  
   echo "<table class=\"table-prod\" cellspacing=\"0\" cellpadding=\"2\">";
   $fieldNames = mysqli_fetch_fields($result);
 

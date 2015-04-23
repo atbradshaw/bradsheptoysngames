@@ -1,7 +1,7 @@
 <?php
 require_once('database_connect.php');
 
-function addToCart($pid, $cid){
+function addToCart($pid, $id){
 	global $mysqli;
 
 	// check if item can be added
@@ -16,7 +16,7 @@ function addToCart($pid, $cid){
 		return;
 	}
 
-	$sql = "SELECT * FROM In_Cart WHERE pid = $pid AND cid = $cid";
+	$sql = "SELECT * FROM In_Cart WHERE pid = $pid AND id = $id";
 
 	$result = mysqli_query($mysqli,$sql);
 
@@ -27,8 +27,8 @@ function addToCart($pid, $cid){
 
     	//echo "</br> New Item!";
     		// row count
-    	$sql = "INSERT INTO In_Cart(pid, cid, count)
-				VALUES ('$pid','$cid',1)";
+    	$sql = "INSERT INTO In_Cart(pid, id, count)
+				VALUES ('$pid','$id',1)";
 
  	}
  	else
@@ -36,7 +36,7 @@ function addToCart($pid, $cid){
  		//echo "</br> Updating Item Count";
  		$sql = "UPDATE In_Cart
  				SET count = count + 1
- 				WHERE pid = $pid AND cid = $cid";
+ 				WHERE pid = $pid AND id = $id";
 
  	}
 	
@@ -48,11 +48,11 @@ function addToCart($pid, $cid){
 function removeFromCart($pid){
 
 	global $mysqli;
-	$cid = $_SESSION['id'];
+	$id = $_SESSION['id'];
 
 	// check if item can be added
 	$sql = "DELETE FROM In_Cart
-			WHERE pid = $pid AND cid = $cid";
+			WHERE pid = $pid AND id = $id";
 
 	if (!mysqli_multi_query($mysqli,$sql)) {
 		echo "Error removing from cart: " . mysqli_error($mysqli);
@@ -62,10 +62,10 @@ function removeFromCart($pid){
 function showCart(){
 	global $mysqli;
 
-	$cid = $_SESSION['id'];
+	$id = $_SESSION['id'];
 	// check if item can be added
 	$sql = "SELECT pname,pid,price,count FROM Product NATURAL JOIN In_Cart
-			WHERE cid = $cid";
+			WHERE id = $id";
 
 	$result = mysqli_query($mysqli,$sql);
 

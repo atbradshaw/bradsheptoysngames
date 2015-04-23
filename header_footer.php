@@ -72,7 +72,7 @@ function createFooter($type){
 	// start of footer
 	echo '<div class="footer">';
 
-		echo '<dir class="contact-info" style="position:absolute; right:10px; text-align:left">
+		echo '<dir class="contact-info" style="position:absolute; right:10px; top: 20px;text-align:left">
 				Conctact
 				</br>Email: bradshep@toys.com
 				</br>Phone: 1-800-555-1234

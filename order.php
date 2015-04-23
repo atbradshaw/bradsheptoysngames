@@ -1,18 +1,12 @@
 <?php
-/*  pid INT(8) UNSIGNED,
-       cid INT(8) UNSIGNED,
-       quantity INT(3),
-       status ENUM('pending','shipped'),
-       time_of_pur DATETIME,
-*/
 
 function addToOrder($pid, $quant, $date){
 	global $mysqli;
 
-	$cid = $_SESSION['id'];
+	$id = $_SESSION['id'];
 
-	$sql = "INSERT INTO In_Order(pid, cid, quantity, status, time_of_pur)
-				VALUES ('$pid','$cid','$quant','pending','$date')";
+	$sql = "INSERT INTO In_Order(pid, id, quantity, status, time_of_pur)
+				VALUES ('$pid','$id','$quant','pending','$date')";
 
 	if (mysqli_query($mysqli,$sql)) {
 		 // header( 'Location: index.php');
@@ -60,9 +54,9 @@ function shipOrder($ordid, $pid, $quant){
 function showOrder(){
 
 	global $mysqli;
-	$cid = $_SESSION['id'];
+	$id = $_SESSION['id'];
 	$sql = "SELECT * FROM In_Order NATURAL JOIN Product
-			WHERE cid = $cid";
+			WHERE id = $id";
 			
 	$result = mysqli_query($mysqli,$sql);
 
@@ -117,11 +111,11 @@ function showAllOrders ($by_date)
 
     $sql = "SELECT * FROM In_Order NATURAL JOIN Product
             WHERE time_of_pur >= '$start_date' and time_of_pur < '$end_date'
-            ORDER BY cid, pid";
+            ORDER BY id, pid";
   }
   else{
     $sql = "SELECT * FROM In_Order NATURAL JOIN Product
-          ORDER BY cid, pid";
+          ORDER BY id, pid";
   }
   $result = mysqli_query($mysqli,$sql);
 
@@ -133,11 +127,11 @@ function showAllOrders ($by_date)
       return;
   }
 
-  // get all cids
-  $sql = "SELECT DISTINCT cid FROM In_Order NATURAL JOIN Product
-          ORDER BY cid";
+  // get all ids
+  $sql = "SELECT DISTINCT id FROM In_Order NATURAL JOIN Product
+          ORDER BY id";
       
-  $cid_result = mysqli_query($mysqli,$sql);
+  $id_result = mysqli_query($mysqli,$sql);
 
 
   // show Customer table
@@ -153,15 +147,15 @@ function showAllOrders ($by_date)
     echo" <th> Ship </th>";
   echo "</tr>";
 
-$temp_cid= mysqli_fetch_assoc($cid_result);
-  echo"<tr> <td> {$temp_cid['cid']} </td><td colspan=\"5\"></td>";
+$temp_id= mysqli_fetch_assoc($id_result);
+  echo"<tr> <td> {$temp_id['id']} </td><td colspan=\"5\"></td>";
   echo"<td><button  onClick='location.href=\"\"' >Ship All</button></td>"; 
   echo"</tr>";
  
     while($row = mysqli_fetch_assoc($result)) {
-      if ($row['cid'] != $temp_cid['cid']){
-        $temp_cid= mysqli_fetch_assoc($cid_result);
-        echo"<tr> <td> {$temp_cid['cid']} </td><td colspan=\"5\"></td>";
+      if ($row['id'] != $temp_id['id']){
+        $temp_id= mysqli_fetch_assoc($id_result);
+        echo"<tr> <td> {$temp_id['id']} </td><td colspan=\"5\"></td>";
         echo"<td><button  onClick='location.href=\"\"' >Ship All</button></td>"; 
         echo"</tr>";
       }

@@ -1,4 +1,5 @@
-<!-- Home Page -->
+<!-- Account Form Page -->
+
 <?php
   session_start();
   include 'header_footer.php';
@@ -8,35 +9,49 @@
 <!DOCTYPE HTML>
 
 <html>
-  <!-- bacjground color -->
-  <body>
+<body>
 
+  <!-- container -->
+  <div class='container'>
+
+    <!-- header filler -->
+    <div style="height:60px">
+    </div>
+
+    <!-- header -->
     <?php
-      // add a header
       addHeader();
     ?>
 
-    <div class="empty-50"> </div>
-    <div class="empty-20"> </div>
+    <!-- Title and Subtitle -->
+  <div class="bar" style="height:330px">
 
-    <dir class="title-text"> BradShep Toys n' Games </dir>
-
-    <div class="empty-100" style="background:#579574; top: -80px; font-size:3em; color:#ffffff;">
-       <div style="position:relative; top:20px">
-    <?php
-    if (isset($_GET['form_type'])){
-      if($_GET['form_type'] == 'customer'){
-        echo  'Account Creator';
-      }
-      else {
-        echo 'Staff Log In';
-      }
-    }
-    ?>
-
-    </div>
+    <div class="box" style="font-size:70px; top:30px; width:700px;"> 
+      BradShep Toys n' Games 
     </div>
 
+    <!-- Account Bar Text -->
+    <div class="bar" style="position:absolute; height:100px; background:#ff00ff; bottom:0px">
+      <div class="box" style="font-size:50px; top:20px; width:1000px; background:#000000">
+        <?php
+          if (isset($_GET['form_type'])){
+            if($_GET['form_type'] == 'customer'){
+              echo  'Account Creator';
+            }
+            else {
+              echo 'Staff Log In';
+            }
+          }
+        ?>
+      </div>
+    </div>
+
+  </div>
+
+
+  
+
+  <div class="bar" style="min-height:400px">
     <?php
     if (isset($_GET['form_type'])){
       if($_GET['form_type'] == 'customer'){
@@ -47,51 +62,48 @@
       }
     }
     ?>
+  </div>
 
 
 
+  <!-- footer -->
+  <?php
+    addFooter();
+  ?>
 
-
-<?php
-  // add a footer
-  addFooter();
-?>
-
-    </body>
-
+</div>
+</body>
 
 </html>
 
 
 <?php 
-
+// account form for a customer
 function customerCreateAccountForm(){
- 
-if(isset($_SESSION['error'])) {
-   echo $_SESSION['error'];
-   unset($_SESSION['error']);
-}
+  if(isset($_SESSION['error'])) {
+    echo "Error Creating Account";
+    unset($_SESSION['error']);
+  }
+  echo  '<div class="box" style="top:20px; height:270px">
 
-  echo  '<div class="account-form-box">
-
-          <form class="account-form-customer" action="create_account.php" method="get">
-            <input class="input-search" type="text" name = "fname" placeholder="First Name" required></br></br>
-            <input class="input-search" type="text" name = "lname" placeholder="Last Name" required></br></br>
-            <input class="input-search" type="text" name = "uname" placeholder="User Name" required></br></br>
-            <input class="input-search" type="password"name = "pword" placeholder="Password" required></br> </br>
+          <form action="create_account.php" method="get">
+            <input class="input-search" type="text" name = "fname" placeholder="First Name"></br></br>
+            <input class="input-search" type="text" name = "lname" placeholder="Last Name"></br></br>
+            <input class="input-search" type="text" name = "uname" placeholder="User Name"></br></br>
+            <input class="input-search" type="password"name = "pword" placeholder="Password"></br> </br>
             <input class="logInBtn" style="position: relative; left:-100px;" type="Submit">
             <button type="button" class="cancelBtn" onClick=\'location.href="index.php"\' >Cancel</button>
           </form>
 
         </div>';
 }
-
+// account form for a staff member
 function staffLogInForm(){
-  echo  '<div class="account-form-box">
-          <form class="account-form-customer" action="staff_login.php" method="get">
-            <input class="input-search" type="text" name = "uname" placeholder="User Name" required></br></br>
-            <input class="input-search" type="password"name = "pword" placeholder="Password" required></br> </br>
-            <input class="logInBtn" style="position: relative; left:-100px;" type="Submit" required>
+  echo  '<div class="box" style="top:20px; height:155px">
+          <form  action="staff_login.php" method="get">
+            <input class="input-search" type="text" name = "uname" placeholder="User Name"></br></br>
+            <input class="input-search" type="password"name = "pword" placeholder="Password"></br> </br>
+            <input class="logInBtn" style="position: relative; left:-100px;" type="Submit">
             <button type="button" class="cancelBtn" onClick=\'location.href="logout.php"\' >Cancel</button>
           </form>
 

@@ -10,81 +10,94 @@
   require_once('database_connect.php');
 ?>
 
-<!DOCTYPE HTML>
-
-<html>
-  <!-- bacjground color -->
-  <body>
-
-  <?php
-    // add a header
-    addHeader();
-  ?>
-
-    <div class="empty-50"> </div>
-    <div class="empty-20"> </div>
-
-    <!-- Sign Up Button -->
-    <?php
-      if(!isset($_SESSION['user_type']))
-      echo '<div>
-              <button class="signUpBtn" onclick="location.href=\'account_form.php?form_type=customer\'">Sign Up</button>
-            </div>';
-    ?>
-
-  <dir class="title-text"> BradShep Toys n' Games </dir>
-
-  <div class="about-text">We are a super cool store that has all of the amazing products
-  that you and your family need. With new shipments coming in
-  all the time, our delivery rates are garunteed premium. 
-  </div>
-
-  <div class="search-box">
-
-  <form action="index.php" method="get" class="search-bar">
-    <input class="input-search" type="text" placeholder="Search for a product" name = "key"><br>
-      </form>';
-    
-  <div class="table-box" style="top:30px">
-  <?php
-      if (isset($_GET['key'])){
-    $key = $_GET['key'];
-    if ($key != ''){
-      searchProducts('pname',$key);
-      echo '<div class="empty-100"></div>';
-    }
-  }
-  ?>
-  </div>
-  </div>
-
+<!-- External Function Calls-->
 <?php
-
-
- if(isset($_GET['add']))
-  {
+  //
+  if(isset($_GET['add'])) {
     if(isset($_SESSION['id'])){
       addToCart($_GET['add'],$_SESSION['id']);
       $temp = $_GET['key'];
 
       //refresh the page
-      header("Location: index.php?key=$temp");
-      echo"</br>Refreshed";
-    }
-    else
-    {
-      echo "</br> Login to add an item";
+      echo"<script>location.href='index.php?key=$temp'</script>";
     }
   }
-
 ?>
 
-<?php
-  // add a footer
-  addFooter();
-?>
+<!DOCTYPE HTML>
 
-    </body>
+<html>
+<body>
 
+<!-- container -->
+<div class='container'>
+  <!-- header filler -->
+  <div style="height:60px">
+  </div>
+
+  <!-- Header -->
+  <?php
+    addHeader();
+  ?>
+
+  <!-- Sign Up Button -->
+  <?php
+    if(!isset($_SESSION['user_type']))
+    echo '<div>
+            <button class="signUpBtn" onclick="location.href=\'account_form.php?form_type=customer\'">Sign Up</button>
+          </div>';
+  ?>
+
+  <!-- Title and Welcome -->
+  <div class="bar" style="height:350px">
+    <div class="box" style="font-size:70px; top:30px; width:700px;"> 
+      BradShep Toys n' Games 
+    </div>
+
+    <div class="box" style="font-size:30px; top:200px; width:1000px;">
+      We are a super cool store that has all of the amazing products
+      that you and your family need. With new shipments coming in
+      all the time, our delivery rates are garunteed premium. 
+    </div>
+  </div>
+
+
+  <!-- Search Box -->
+  <div class="bar" style="min-height:300px; background:#0000ff; top:0px; ">
+
+    <!-- Search Bar -->
+    <form action="index.php" method="get" class="search-bar" style=" top:30px; z-index:100">
+      <input class="input-search" type="text" placeholder="Search for a product" name = "key"><br>
+    </form>
+      
+    <!-- Spacer -->
+    <div class="bar" style="height:70px"> 
+    </div>
+
+    <!-- Search Result Table -->
+    <div class="rel" style="top:0px">   
+      <?php
+          if (isset($_GET['key'])){
+        $key = $_GET['key'];
+        if ($key != ''){
+          searchProducts('pname',$key);
+        }
+      }
+      ?>
+    </div>
+
+  </div>
+
+  <!-- Spacer -->
+  <div class="bar" style="height:170px"> 
+  </div>
+  
+  <!-- Footer -->
+  <?php
+   addFooter();
+  ?>
+
+</div>
+</body>
 
 </html>

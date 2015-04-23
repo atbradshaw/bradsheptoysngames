@@ -65,6 +65,7 @@ else {
 
 ?>
 </div>
+
 <div class="empty-100" style=" position:absolute; background:#707070; top:60px; font-size:3em; color:#ffffff;"></div>
  
 <div class="empty-100" style=" position:absolute; background:#579574; top:160px; font-size:3em; color:#ffffff;">
