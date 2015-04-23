@@ -21,6 +21,13 @@ require_once('database_connect.php');
         $date = date("Y-m-d H:i:s");
         addToOrder($_GET['pid'],$_GET['quant'], $date);
         removeFromCart($_GET['pid']);
+        $_SESSION['cart_cnt'] = $_SESSION['cart_cnt'] - $_GET['quant'];
+        echo"<script>location.href='show_cart.php'</script>";
+      }
+
+      if(isset($_GET['remove']) and isset($_GET['quant'])){
+        removeFromCart($_GET['remove']);
+        $_SESSION['cart_cnt'] = $_SESSION['cart_cnt'] - $_GET['quant'];
         echo"<script>location.href='show_cart.php'</script>";
       }
     ?>

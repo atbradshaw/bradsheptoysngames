@@ -8,7 +8,7 @@ function searchProducts($field, $prod){
   $sql;
 
       $prod = '%' . $prod . '%';
-      $sql = "SELECT pname,price,stock,pid FROM Product WHERE $field LIKE '$prod'"; 
+      $sql = "SELECT pname,price,stock,pid,promo_rate FROM Product WHERE $field LIKE '$prod'"; 
 
   $result = mysqli_query($mysqli,$sql);
 
@@ -16,8 +16,7 @@ function searchProducts($field, $prod){
     $rowcount=mysqli_num_rows($result);
   if(!$rowcount)
     {
-      echo "</br> No results for search. :(";
-      return;
+      return 0;
   }
 
   // show Customer table
@@ -37,16 +36,12 @@ function searchProducts($field, $prod){
 
   while($row = mysqli_fetch_assoc($result)) {
     echo "<tr>";
-    foreach ($row as $r) {
-      echo "<td>";
-      if ($r == NULL) {
-        echo "NULL";
-      }
-      else{
-        echo "$r";
-      }
-      echo "</td>";
-    }
+    $act_price = round($row['price'] * $row['promo_rate'],2);
+    echo "<td> {$row['pname']} </td>";
+    echo "<td> $act_price </td>";
+    echo "<td> {$row['stock']} </td>";
+    echo "<td> {$row['pid']} </td>";
+
 
     // add items
       if(isset($_SESSION['user_type'])){

@@ -17,6 +17,7 @@
     if(isset($_SESSION['id'])){
       addToCart($_GET['add'],$_SESSION['id']);
       $temp = $_GET['key'];
+      $_SESSION['cart_cnt'] = $_SESSION['cart_cnt'] + 1;
 
       //refresh the page
       echo"<script>location.href='index.php?key=$temp'</script>";
@@ -63,15 +64,18 @@
 
 
   <!-- Search Box -->
-  <div class="bar" style="min-height:300px; background:#0000ff; top:0px; ">
+  <div class="bar" style="min-height:300px; background:#0000ff; ">
+
+  <div class="bar" style="height:30px; background:#00ff00">
+  </div>
 
     <!-- Search Bar -->
-    <form action="index.php" method="get" class="search-bar" style=" top:30px; z-index:100">
+    <form action="index.php" method="get" class="search-bar" style=" top:0px; z-index:100">
       <input class="input-search" type="text" placeholder="Search for a product" name = "key"><br>
     </form>
       
     <!-- Spacer -->
-    <div class="bar" style="height:70px"> 
+    <div class="bar" style="height:60px; background:#000000"> 
     </div>
 
     <!-- Search Result Table -->
@@ -80,7 +84,9 @@
           if (isset($_GET['key'])){
         $key = $_GET['key'];
         if ($key != ''){
-          searchProducts('pname',$key);
+          if (!searchProducts('pname',$key)){
+            echo '<div class="table-prod"> <div class="font" style="height:25px; font-size:20px; top:0px"> No Results </div></div>';
+          }
         }
       }
       ?>

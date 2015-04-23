@@ -2,7 +2,7 @@
 // Log In for Customer
 
 session_start();
-
+include 'in_cart.php';
 require_once('database_connect.php');
 
 // get user name and password
@@ -31,6 +31,8 @@ $_SESSION['fname'] = $row["first_name"];
 $_SESSION['lname'] = $row["last_name"];
 $_SESSION['id'] = $row["id"];
 $_SESSION['user_type'] = "customer";
+
+$_SESSION['cart_cnt']= getCartItemCnt();
 
 // return to home page
 echo"<script>location.href='index.php'</script>";

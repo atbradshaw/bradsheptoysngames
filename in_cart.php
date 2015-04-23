@@ -59,12 +59,25 @@ function removeFromCart($pid){
 		}
 }
 
+function getCartItemCnt(){
+	global $mysqli;
+
+	$id = $_SESSION['id'];
+
+	$sql = "SELECT * FROM Product NATURAL JOIN In_Cart
+			WHERE id = $id";
+
+	$result = mysqli_query($mysqli,$sql);
+
+	return mysqli_num_rows($result);
+}
+
 function showCart(){
 	global $mysqli;
 
 	$id = $_SESSION['id'];
 	// check if item can be added
-	$sql = "SELECT pname,pid,price,count FROM Product NATURAL JOIN In_Cart
+	$sql = "SELECT pname,pid,price,count,promo_rate FROM Product NATURAL JOIN In_Cart
 			WHERE id = $id";
 
 	$result = mysqli_query($mysqli,$sql);
@@ -90,23 +103,18 @@ function showCart(){
 	 
 	  while($row = mysqli_fetch_assoc($result)) {
 	    echo "<tr>";
-	    foreach ($row as $r) {
-	      echo "<td>";
-	      if ($r == NULL) {
-	        echo "NULL";
-	      }
-	      else{
-	        echo "$r";
-	      }
-	      echo "</td>";
-	    }
-	    echo"<td>";
-	        // add items
+    	$act_price = round($row['price'] * $row['promo_rate'],2);
+	    echo "<td> {$row['pname']} </td>";
+	    echo "<td> {$row['pid']} </td>";
+	    echo "<td> $act_price </td>";
+	    echo "<td> {$row['count']}</td>";
+
+	   	echo"<td>";
 
     $pid = $row['pid'];
     $quant = $row['count'];
-  	echo" <button  onClick='location.href=\"?pid=$pid&quant=$quant\"' > ADD</button>"; 
-
+  	echo" <button  onClick='location.href=\"?pid=$pid&quant=$quant\"' > Add</button>"; 
+  	echo" <button  onClick='location.href=\"?remove=$pid&quant=$quant\"' > Delete</button>"; 
   	echo"</td>";
 
 	    echo "</tr>";

@@ -32,11 +32,14 @@ function createHeader($type){
     {
         $fname = $_SESSION['fname'];
         $lname = $_SESSION['lname'];
+        $cart_cnt = $_SESSION['cart_cnt'];
+
     	echo '<div class="login-form" style="width:400px">
     			<button type="submit" class="logOutBtn" onclick="location.href=\'logout.php\'">Sign Out</button>
     			<button type="submit" class="showCartBtn" onclick="location.href=\'show_cart.php\'">Cart</button>
-    			<div class="cartItemCnt">0</div>
-
+    			<div class="cartItemCnt">';
+                echo "$cart_cnt";
+        echo '</div>
                 <div class="customer-name">';
                 echo "$fname  &nbsp $lname";
     	echo ' </div> </div>';

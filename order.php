@@ -111,7 +111,7 @@ function showAllOrders ($by_date)
 
     $sql = "SELECT * FROM In_Order NATURAL JOIN Product
             WHERE time_of_pur >= '$start_date' and time_of_pur < '$end_date'
-            ORDER BY id, pid";
+            ORDER BY id, ordid";
   }
   else{
     $sql = "SELECT * FROM In_Order NATURAL JOIN Product
