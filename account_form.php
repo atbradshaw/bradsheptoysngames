@@ -68,7 +68,7 @@
 function customerCreateAccountForm(){
  
 if(isset($_SESSION['error'])) {
-   echo "test";
+   echo $_SESSION['error'];
    unset($_SESSION['error']);
 }
 
