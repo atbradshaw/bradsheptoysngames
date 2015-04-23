@@ -48,10 +48,10 @@ include 'header_footer.php';
 
 
   <!-- Button Bar -->
-  <div class="bar" style="height:70px; background:#0000ff; top:0px; "> 
+  <div class="bar" style="height:70px; background:#202020; top:0px; "> 
 
     <!-- Button Box -->
-    <div class="box" style=" background:#000000; height:50px; top:10px; z-index=1000; width:1000px">
+    <div class="box" style=" height:50px; top:10px; z-index=1000; width:1000px">
 
       <!-- Buttons -->
       <?php if ($_SESSION['user_type'] == 'staff'){
@@ -73,8 +73,8 @@ include 'header_footer.php';
   </div>
 
   <!-- Subtitle -->
-  <div class="bar" style="height:80px; background:#ff00ff; bottom:0px;">
-    <div class="box" style="font-size:50px; top:10px; width:1000px; background:#000000;">
+  <div class="bar" style="height:80px; background:#114E77; bottom:0px;">
+    <div class="box" style="font-size:50px; top:10px; width:1000px;">
 
       <?php
           // all products
@@ -108,9 +108,9 @@ include 'header_footer.php';
   <!-- Order By Date Buttons -->
   <?php
     if(isset($_GET['type']) and $_GET['type'] == 'orders_by_date'){
-      echo '<div class="bar" style="height:60px; background:#fffff0; bottom:0px">';
+      echo '<div class="bar" style="height:60px; background:#ffffff; bottom:0px">';
 
-      echo" <div class=\"box\" style=\"font-size:50px; top:10px; height: 40px; width:500px; background:#000000\">
+      echo" <div class=\"box\" style=\"font-size:50px; top:10px; height: 40px; width:500px;\">
               <button class='staffBtn' style='left:0px' onclick=\"location.href='staff_index.php?type=orders_by_date&span=weeks'\">Week</button>
               <button class='staffBtn' style='right:190px' onclick=\"location.href='staff_index.php?type=orders_by_date&span=months'\">Month</button>
               <button class='staffBtn' style='right:0px' onclick=\"location.href='staff_index.php?type=orders_by_date&span=years'\">Year</button>
@@ -121,7 +121,7 @@ include 'header_footer.php';
   ?>
 
  <!-- Spacer -->
-  <div class="bar" style="height:50px; background:#0f00ff;">
+  <div class="bar" style="height:50px; ">
   </div>
 
   <!-- Table -->
@@ -157,7 +157,7 @@ include 'header_footer.php';
   </div>
 
  <!-- Spacer -->
-  <div class="bar" style="height:150px; background:#0f00ff;">
+  <div class="bar" style="height:150px; ">
   </div>
 
 <?php

@@ -50,7 +50,7 @@
   ?>
 
   <!-- Title and Welcome -->
-  <div class="bar" style="height:350px">
+  <div class="bar" style="height:350px;">
     <div class="box" style="font-size:70px; top:30px; width:700px;"> 
       BradShep Toys n' Games 
     </div>
@@ -64,9 +64,9 @@
 
 
   <!-- Search Box -->
-  <div class="bar" style="min-height:300px; background:#0000ff; ">
+  <div class="bar" style="min-height:300px; background:#ffffff; ">
 
-  <div class="bar" style="height:30px; background:#00ff00">
+  <div class="bar" style="height:30px; background:#ffffff">
   </div>
 
     <!-- Search Bar -->
@@ -75,7 +75,7 @@
     </form>
       
     <!-- Spacer -->
-    <div class="bar" style="height:60px; background:#000000"> 
+    <div class="bar" style="height:60px; background:#ffffff"> 
     </div>
 
     <!-- Search Result Table -->
@@ -95,7 +95,7 @@
   </div>
 
   <!-- Spacer -->
-  <div class="bar" style="height:170px"> 
+  <div class="bar" style="height:170px; background:#ffffff"> 
   </div>
   
   <!-- Footer -->

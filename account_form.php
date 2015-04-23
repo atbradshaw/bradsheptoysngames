@@ -24,15 +24,15 @@
     ?>
 
     <!-- Title and Subtitle -->
-  <div class="bar" style="height:330px">
+  <div class="bar" style="height:330px; ">
 
     <div class="box" style="font-size:70px; top:30px; width:700px;"> 
       BradShep Toys n' Games 
     </div>
 
     <!-- Account Bar Text -->
-    <div class="bar" style="position:absolute; height:100px; background:#ff00ff; bottom:0px">
-      <div class="box" style="font-size:50px; top:20px; width:1000px; background:#000000">
+    <div class="bar" style="position:absolute; height:100px; background:#114E77; bottom:0px">
+      <div class="box" style="font-size:50px; top:20px; width:1000px;">
         <?php
           if (isset($_GET['form_type'])){
             if($_GET['form_type'] == 'customer'){
@@ -51,7 +51,7 @@
 
   
 
-  <div class="bar" style="min-height:400px">
+  <div class="bar" style="min-height:400px; background:#ffffff">
     <?php
     if (isset($_GET['form_type'])){
       if($_GET['form_type'] == 'customer'){

@@ -26,7 +26,7 @@ div {
 }
 
 html, body {
-	 background:#5994CF; 
+	 background:#3583C4; 
 	 margin: 0;
 	 padding:0;
 	 height: 100%;
@@ -77,7 +77,7 @@ html, body {
 	text-align: center;
 	width:100%;
 	min-height:10px;
-	background: #ffff00;
+	
 	font-family: arial;
 	color: #ffffff;
 	font-size: 16px;
@@ -91,7 +91,7 @@ html, body {
 	font-family: arial;
 	width:800px;
 	min-height:10px;
-	background: #2ff000;
+	
 	left:50%; 
 	transform:translate(-50%);
 }
@@ -130,7 +130,7 @@ html, body {
  .input-search{
     padding: 8px;
     border-radius: 3px;
-    border: 2px solid #5994CF;
+    border: 2px solid #3583C4;
     background: #ffffff;
     width: 400px;
     height:20px;
@@ -201,7 +201,7 @@ html, body {
 	text-decoration:none;
 }
 .staffBtn:hover {
-	background-color:#5994CF;
+	background-color:#3583C4;
 }
 
 .tableBtn{
@@ -220,7 +220,7 @@ html, body {
 	text-decoration:none;
 }
 .tableBtn:hover {
-	background-color:#5994CF;
+	background-color:#3583C4;
 }
 
 .showCartBtn{
@@ -294,7 +294,7 @@ html, body {
 	border: 0px;
 	display:inline-block;
 	cursor:pointer;
-	color:#5994CF;
+	color:#3583C4;
 	font-family:arial;
 	font-size:17px;
 	padding:8px 27px;
@@ -311,10 +311,10 @@ html, body {
 	position: absolute;
 	background-color: rgba(0,0,0,0);
 	border-radius:8px;
-	border:2px solid #5994CF;
+	border:2px solid #a0a0a0;
 	display:inline-block;
 	cursor:pointer;
-	color:#5994CF;
+	color:#a0a0a0;
 	font-family:arial;
 	font-size:17px;
 	padding:8px 27px;
@@ -323,8 +323,9 @@ html, body {
 	z-index:10004;
 }
 .staffLogInBtn:hover {
-	background-color:#5994CF; 
-	color: #565656;
+	background-color:#a0a0a0; 
+	border:2px solid #a0a0a0;
+	color: #505050;
 }
 
 .cancelBtn {
@@ -478,7 +479,7 @@ table th:last-child{
 }
 
 table tr:nth-child(odd){
-	background: #5994CF;
+	background: #3583C4;
 	color: #ffffff;
 }
 table tr:nth-child(even){
