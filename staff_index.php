@@ -37,7 +37,9 @@ include 'header_footer.php';
 
     // update promo
     if (isset($_GET['update']) and $_GET['update'] == 'promo' and isset($_GET['pid']) and isset($_GET['rate'])){
-        updatePromoRate($_GET['pid'], $_GET['rate']);
+      $rate = ($_GET['rate']>=0.01) ? $_GET['rate'] : 0.01;
+      $rate = ($rate<=1.0) ? $rate : 1.0;
+        updatePromoRate($_GET['pid'], $rate);
         echo"<script>location.href='staff_index.php?type=update_promo'</script>";
     }
   ?>
