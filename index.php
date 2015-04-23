@@ -79,7 +79,7 @@
     </div>
 
     <!-- Search Result Table -->
-    <div class="rel" style="top:0px">   
+       
       <?php
           if (isset($_GET['key'])){
         $key = $_GET['key'];
@@ -90,7 +90,7 @@
         }
       }
       ?>
-    </div>
+
 
   </div>
 

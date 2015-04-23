@@ -125,7 +125,8 @@ include 'header_footer.php';
   </div>
 
   <!-- Table -->
-  <div class="box">
+  <div class="bar" style="min-height:300px">
+  
     <?php
       if (isset($_GET['type'])){
         // view all items
@@ -152,8 +153,12 @@ include 'header_footer.php';
         }
       }
     ?>
+ 
   </div>
 
+ <!-- Spacer -->
+  <div class="bar" style="height:150px; background:#0f00ff;">
+  </div>
 
 <?php
   addFooter();
