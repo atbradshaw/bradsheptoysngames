@@ -18,6 +18,14 @@
     <div style="height:60px">
     </div>
 
+      <!-- Redirections -->
+  <?php
+    // if a staff or manager
+    if (isset($_SESSION['user_type']) and ( $_SESSION['user_type'] == 'staff' or $_SESSION['user_type'] == 'manager')){
+      echo"<script>location.href='staff_index.php'</script>";
+    }
+  ?>
+  
     <!-- header -->
     <?php
       addHeader();
@@ -26,9 +34,8 @@
     <!-- Title and Subtitle -->
   <div class="bar" style="height:330px; ">
 
-    <div class="box" style="font-size:70px; top:30px; width:700px;"> 
-      BradShep Toys n' Games 
-    </div>
+    <img style="position:relative; top:30px"src="logo_405.png" alt="Mountain View" height="176" width="500">
+
 
     <!-- Account Bar Text -->
     <div class="bar" style="position:absolute; height:100px; background:#114E77; bottom:0px">
@@ -65,7 +72,20 @@
     ?>
   </div>
 
+<!-- Error Message If Cant Create Account -->
+<?php
+    if(isset($_SESSION['error'])) {
+      echo'  <div class="bar" style="height:40px; background:#ffffff">
+              <div class="box" style="font-size:20px; color:#CCC; top:-50px; width:700px;"> 
+              Error Creating Account
+               </div>
+            </div>
 
+             <div class="bar" style="height:120px; background:#ffffff"> 
+            </div>';
+      unset($_SESSION['error']);
+    }
+?>
 
   <!-- footer -->
   <?php
@@ -81,10 +101,7 @@
 <?php 
 // account form for a customer
 function customerCreateAccountForm(){
-  if(isset($_SESSION['error'])) {
-    echo $_SESSION['error'];
-    unset($_SESSION['error']);
-  }
+
   echo  '<div class="box" style="top:20px; height:270px">
 
           <form action="create_account.php" method="get">
@@ -97,6 +114,7 @@ function customerCreateAccountForm(){
           </form>
 
         </div>';
+
 }
 // account form for a staff member
 function staffLogInForm(){

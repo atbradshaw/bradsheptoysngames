@@ -97,13 +97,13 @@ function showCart(){
 	  <th>PID</th>
 	  <th>Price</th>
 	  <th>Quantity</th>
-	  <th>Purchase</th>
+	  <th>Buy / Remove</th>
 
 	  </tr>";
 	 
 	  while($row = mysqli_fetch_assoc($result)) {
 	    echo "<tr>";
-    	$act_price = round($row['price'] * $row['promo_rate'],2);
+    	$act_price = round($row['price'] * (1 - $row['promo_rate']),2);
 	    echo "<td> {$row['pname']} </td>";
 	    echo "<td> {$row['pid']} </td>";
 	    echo "<td> $act_price </td>";
@@ -113,8 +113,8 @@ function showCart(){
 
     $pid = $row['pid'];
     $quant = $row['count'];
-  	echo" <button  onClick='location.href=\"?pid=$pid&quant=$quant\"' > Add</button>"; 
-  	echo" <button  onClick='location.href=\"?remove=$pid&quant=$quant\"' > Delete</button>"; 
+  	echo" <button  class= 'tableAddBtn' onClick='location.href=\"?pid=$pid&quant=$quant\"' >Add</button>"; 
+  	echo" <button  class= 'tableDeleteBtn' onClick='location.href=\"?remove=$pid&quant=$quant\"' >Remove</button>"; 
   	echo"</td>";
 
 	    echo "</tr>";

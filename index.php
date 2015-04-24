@@ -36,6 +36,14 @@
   <div style="height:60px">
   </div>
 
+  <!-- Redirections -->
+  <?php
+    // if a staff or manager
+    if (isset($_SESSION['user_type']) and ( $_SESSION['user_type'] == 'staff' or $_SESSION['user_type'] == 'manager')){
+      echo"<script>location.href='staff_index.php'</script>";
+    }
+  ?>
+
   <!-- Header -->
   <?php
     addHeader();
@@ -51,14 +59,12 @@
 
   <!-- Title and Welcome -->
   <div class="bar" style="height:350px;">
-    <div class="box" style="font-size:70px; top:30px; width:700px;"> 
-      BradShep Toys n' Games 
-    </div>
+    <img style="position:relative; top:30px"src="logo_405.png" alt="Mountain View" height="176" width="500">
 
-    <div class="box" style="font-size:30px; top:200px; width:1000px;">
-      We are a super cool store that has all of the amazing products
-      that you and your family need. With new shipments coming in
-      all the time, our delivery rates are guaranteed premium. 
+    <div class="box" style="font-size:20px; top:230px; width:900px;">
+      For over 50 years, Bradshep Toys and Games have brought joy to people all over the world. 
+      We believe in the magic that a simple toy can bring into all of our lifes. With a dedicated staff
+      and years of perfecting our craft, we hope to offer you the best toy buying experince you'll ever have.
     </div>
   </div>
 
@@ -81,12 +87,10 @@
     <!-- Search Result Table -->
        
       <?php
-          if (isset($_GET['key'])){
-        $key = $_GET['key'];
-        if ($key != ''){
+        if (isset($_GET['key'])){
+          $key = $_GET['key'];
           if (!searchProducts('pname',$key)){
-            echo '<div class="table-prod"> <div class="font" style="height:25px; font-size:20px; top:0px"> No Results </div></div>';
-          }
+            echo '<div class="table-prod" style="background:none"> <div class="font" style="height:100px; font-size:20px; top:35px; color:#CCC"> No Results </div></div>';
         }
       }
       ?>

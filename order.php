@@ -105,9 +105,11 @@ function showAllOrders ($by_date)
   if($by_date != "all"){
     date_default_timezone_set('America/New_York');
     $end_date = date("Y-m-d H:i:s");
-    echo "$end_date</br>";
+
     $start_date = date("Y-m-d H:i:s", strtotime($end_date . "-1" . "$by_date"));
-    echo "$start_date";
+    echo "<div class='bar' style='position:absolute; top:-50px; height:35px; background:#092C3F'>
+            <div class='box' style='top:10px'> Start: $start_date  &nbsp&nbsp  End: $end_date </div>
+          </div>";
 
     $sql = "SELECT * FROM In_Order NATURAL JOIN Product
             WHERE time_of_pur >= '$start_date' and time_of_pur < '$end_date'
@@ -115,7 +117,8 @@ function showAllOrders ($by_date)
   }
   else{
     $sql = "SELECT * FROM In_Order NATURAL JOIN Product
-          ORDER BY id, pid";
+            WHERE status = 'pending'
+            ORDER BY id, pid";
   }
   $result = mysqli_query($mysqli,$sql);
 
@@ -123,14 +126,21 @@ function showAllOrders ($by_date)
     $rowcount=mysqli_num_rows($result);
   if(!$rowcount)
     {
-      echo "</br> No Orders";
+      echo '<div class="table-prod" > <div class="font" style="height:100px; font-size:20px; top:40px;"> No Orders </div></div>';
       return;
   }
 
   // get all ids
-  $sql = "SELECT DISTINCT id FROM In_Order NATURAL JOIN Product
-          ORDER BY id";
-      
+  if ($by_date == "all"){
+    $sql = "SELECT DISTINCT id FROM In_Order NATURAL JOIN Product
+            WHERE status = 'pending'
+            ORDER BY id";
+  }
+  else{
+    $sql = "SELECT DISTINCT id FROM In_Order NATURAL JOIN Product
+            ORDER BY id";
+  }
+
   $id_result = mysqli_query($mysqli,$sql);
 
 
@@ -138,7 +148,7 @@ function showAllOrders ($by_date)
   echo "<table class='table-prod' border=\"1\" cellspacing=\"0\" cellpadding=\"2\">";
 
   echo "<tr>";
-    echo" <th> CID </th>";
+    echo" <th> ID </th>";
     echo" <th> Name </th>";
     echo" <th> PID </th>";
     echo" <th> Quantity </th>";
@@ -148,16 +158,13 @@ function showAllOrders ($by_date)
   echo "</tr>";
 
 $temp_id= mysqli_fetch_assoc($id_result);
-  echo"<tr> <td> {$temp_id['id']} </td><td colspan=\"5\"></td>";
-  echo"<td><button  onClick='location.href=\"\"' >Ship All</button></td>"; 
-  echo"</tr>";
+  echo"<tr> <td> {$temp_id['id']} </td><td colspan=\"6\"></td></tr>";
+
  
     while($row = mysqli_fetch_assoc($result)) {
       if ($row['id'] != $temp_id['id']){
         $temp_id= mysqli_fetch_assoc($id_result);
-        echo"<tr> <td> {$temp_id['id']} </td><td colspan=\"5\"></td>";
-        echo"<td><button  onClick='location.href=\"\"' >Ship All</button></td>"; 
-        echo"</tr>";
+        echo"<tr> <td> {$temp_id['id']} </td><td colspan=\"6\"></td></tr>";
       }
         
         echo "<tr>";
@@ -167,11 +174,17 @@ $temp_id= mysqli_fetch_assoc($id_result);
         echo "<td>{$row['quantity']}</td>";
         echo "<td>{$row['time_of_pur']}</td>";
         echo "<td>{$row['status']}</td>";
+        
         if ($row['status'] == 'pending'){
-          $ordid = $row['ordid'];
-          $pid = $row['pid'];
-          $quant = $row['quantity'];
-          echo"<td><button  onClick='location.href=\"staff_index.php?ordid=$ordid&pid=$pid&quant=$quant\"' >Ship</button></td>"; 
+          if ($row['quantity'] > $row['stock']){
+            echo"<td><button  class='tableGreyedBtn' >Ship</button></td>";
+          }
+          else{
+            $ordid = $row['ordid'];
+            $pid = $row['pid'];
+            $quant = $row['quantity'];
+            echo"<td><button  class='tableBtn' onClick='location.href=\"staff_index.php?ordid=$ordid&pid=$pid&quant=$quant&page=$by_date\"' >Ship</button></td>"; 
+          }
         }
         else{
           echo "<td></td>";

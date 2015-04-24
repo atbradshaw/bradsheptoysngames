@@ -4,16 +4,11 @@
 session_start();
 require_once('database_connect.php');
 
-
-
 // get inputted user info
 $fname = !empty($_GET["fname"]) ? $_GET["fname"] : null;
 $lname = !empty($_GET["lname"]) ? $_GET["lname"] : null;
 $uname = !empty($_GET["uname"]) ? $_GET["uname"] : null;
 $pword = !empty($_GET["pword"]) ? $_GET["pword"] : null;
-
-
-
 
 //$sql = "INSERT INTO User(first_name,last_name,user_name,password,type)
 //VALUES ('$fname','$lname','$uname','$pword','customer')";
@@ -34,7 +29,7 @@ if ($sql->execute()){
   $_SESSION['uname'] = $uname;
   $_SESSION['id'] = $mysqli->insert_id;
   $_SESSION['user_type'] = "customer";
-
+  $_SESSION['cart_cnt'] = 0;
   // go back to home page
   echo"<script>location.href='index.php'</script>";
   return;

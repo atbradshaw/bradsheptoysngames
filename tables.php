@@ -21,8 +21,6 @@ function createTables(){
     echo "Error creating table: " . mysqli_error($mysqli);
   }
 
-
-
   //Product Table
   $sql = "CREATE TABLE IF NOT EXISTS Product(
        pid INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -33,7 +31,7 @@ function createTables(){
        stock INT(10),
        CHECK (stock >=0),
        CHECK (price >= 0.01),
-       CHECK(promo_rate >0 AND promo_rate <= 1)
+       CHECK(promo_rate >=0 AND promo_rate <= 1)
        )";
 
   if (mysqli_query($mysqli,$sql)) {
@@ -41,7 +39,6 @@ function createTables(){
   } else {
     echo "Error creating table: " . mysqli_error($mysqli);
   }
-
 
   /*
   //Product Trigger
@@ -59,11 +56,6 @@ function createTables(){
     echo "Error creating table: " . mysqli_error($mysqli);
   }
   */
-
-
-
-
-
 
   //In_Order Table
   $sql = "CREATE TABLE IF NOT EXISTS In_Order(
@@ -99,11 +91,7 @@ function createTables(){
   } else {
     echo "Error creating table: " . mysqli_error($mysqli);
   }
-
-
-
 }
-
 
 function printTable($tableName) {
   global $mysqli;

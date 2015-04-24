@@ -5,6 +5,10 @@
 	border: 0;
 }
 
+*:focus{
+	outline:0px;
+}
+
 .c-self {
 	margin: 0 auto;
 }
@@ -172,9 +176,9 @@ html, body {
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	border-radius:5px;
-	border:1px solid #606060;
+	border:0px;
 	display:inline-block;
-
+	height:24px;
 	color:#ffffff;
 	font-family:arial;
 	font-size:17px;
@@ -222,13 +226,33 @@ html, body {
 	color: #303030;
 }
 
+.staffDateShownBtn{
+	position: absolute;
+	background-color:#ffffff;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#303030;
+	font-family:arial;
+	font-size:20px;
+	padding:8px 20px;
+	text-decoration:none;
+}
+.staffDateShownBtn:hover {
+	background-color:#ffffff;
+	color: #303030;
+}
+
+
 .tableBtn{
 	position: relative;
 	background-color:#085689;
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px;
 	border-radius:8px;
-	border:1px solid #085689;
+	border:0px;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -241,11 +265,66 @@ html, body {
 	background-color:#3583C4;
 }
 
+.tableGreyedBtn{
+	position: relative;
+	background-color:#777777;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	border:0px;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:14px;
+	padding:4px 20px;
+	text-decoration:none;
+}
+
+
+.tableAddBtn{
+	position: relative;
+	background-color:#085689;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	border:0px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:14px;
+	padding:4px 20px;
+	text-decoration:none;
+}
+.tableAddBtn:hover {
+	background-color:#3583C4;
+}
+
+.tableDeleteBtn{
+	position: relative;
+	background-color:#CE132E;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	border:0px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:14px;
+	padding:4px 20px;
+	text-decoration:none;
+}
+.tableDeleteBtn:hover {
+	background-color:#870B1D;
+}
+
 .showCartBtn{
 	position: fixed;
 	right: 280px;
 	top: 10px;
-	background-color:#44c767;
+	height: 40px;
+	background-color:#13CE63;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	border-radius:5px;
@@ -259,7 +338,7 @@ html, body {
 	text-decoration:none;
 }
 .showCartBtn:hover {
-	background-color:#18ab29;
+	background-color:#0FAA51;
 }
 
 .logOutBtn {
@@ -324,6 +403,29 @@ html, body {
 }
 .signUpBtn:hover {
 	background:#114E77;
+	color: #ffffff;
+}
+
+.contShopBtn {
+	position: absolute;
+	right: 8px;
+	top:80px;
+	background:#ffffff;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#3583C4;
+	font-family:arial;
+	font-size:17px;
+	padding:8px 27px;
+	text-decoration:none;
+	width:200px;
+	z-index: 20000;
+}
+.contShopBtn:hover {
+	background:#3583C4;
 	color: #ffffff;
 }
 
@@ -472,13 +574,12 @@ html, body {
 	text-align: center;
 	margin: 0 auto;
 	top:0px;
-	width:600px;
+	width:800px;
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px;
 	border-radius:8px;
-	border: 10px solid #000000;
-	background: #6AACDE;
-	border-color: #6AACDE;
+	border: 0px solid #CCC;
+	background: #3D95D1;
 }
 
 table th{
@@ -486,9 +587,10 @@ table th{
 	font-family: arial;
 	font-size: 20px;
 	color: #ffffff;
-	border:1px solid #000000;
+	border:0px solid #000000;
 	border-top: none;
-	padding:3px 5px;
+
+	padding:10px 5px;
 }
 
 table tr {
@@ -496,7 +598,6 @@ table tr {
 	font-family: arial;
 	font-size: 16px;
 
-	
 }
 
 table th:first-child{
@@ -504,9 +605,6 @@ table th:first-child{
 	-webkit-border-radius:8px 0 0 0;
 	border-radius:8px 0 0 0;
 	border-left: none;
-
-
-
 }
 
 table th:last-child{
@@ -517,9 +615,10 @@ table th:last-child{
 }
 
 table tr:nth-child(odd){
-	background: #3583C4;
-	color: #ffffff;
+	background: #ffffff;
+	color: #085689;
 }
+
 table tr:nth-child(even){
 	background: #ffffff;
 	color: #085689;
@@ -536,9 +635,16 @@ table tr:last-child td:last-child{
 	border-radius: 0 0 8px 0;
 }
 
+table tr:last-child td{
+	border-bottom: none;
+}
+
 table td{
-	border:1px solid #000000;
+	padding: 10px 0px;
+	border:1px solid #085689;
 	border-top:none;
+	border-left:none;
+	border-right: none;
 }
 
 /*-------- Account Forms --------*/

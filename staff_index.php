@@ -20,12 +20,31 @@ include 'header_footer.php';
   <div style="height:60px">
   </div>
 
+  <!-- Redirections -->
+  <?php
+    // not logged in
+    if (!isset($_SESSION['user_type'])){
+      echo"<script>location.href='index.php'</script>";
+    }
+
+    // not a staff or manager
+    if (isset($_SESSION['user_type']) and !( $_SESSION['user_type'] == 'staff' or $_SESSION['user_type'] == 'manager')){
+      echo"<script>location.href='index.php'</script>";
+    }
+  ?>
+
   <!-- External Functions and Refresh -->
   <?php
   // ship order
-    if (isset($_GET['ordid']) and isset($_GET['pid']) and isset($_GET['quant'])){
+    if (isset($_GET['ordid']) and isset($_GET['pid']) and isset($_GET['quant']) and isset($_GET['page'])){
       shipOrder($_GET['ordid'], $_GET['pid'], $_GET['quant']);
-      echo"<script>location.href='staff_index.php?type=all_orders'</script>";
+      if ($_GET['page'] == 'all'){
+        echo"<script>location.href='staff_index.php?type=all_orders'</script>";
+      }
+      else {
+        $page = $_GET['page'];
+        echo"<script>location.href='staff_index.php?type=orders_by_date&span=$page'</script>";
+      }
     }
   
     // update stock
@@ -111,12 +130,28 @@ include 'header_footer.php';
   <!-- Order By Date Buttons -->
   <?php
     if(isset($_GET['type']) and $_GET['type'] == 'orders_by_date'){
+        $class1 = 'staffDateBtn';
+        $class2 = 'staffDateBtn';
+        $class3 = 'staffDateBtn';
+
+      if (isset($_GET['span'])){
+        if ($_GET['span'] == 'weeks'){
+          $class1 = 'staffDateShownBtn';
+        }
+        elseif ($_GET['span'] == 'months'){
+          $class2 = 'staffDateShownBtn';
+        }
+        elseif ($_GET['span'] == 'years'){
+          $class3 = 'staffDateShownBtn';
+        }
+      }
+
       echo '<div class="bar" style="height:60px; background:#0C3F5B; bottom:0px">';
 
       echo" <div class=\"box\" style=\"font-size:50px; top:10px; height: 40px; width:500px;\">
-              <button class='staffDateBtn' style='left:0px' onclick=\"location.href='staff_index.php?type=orders_by_date&span=weeks'\">Week</button>
-              <button class='staffDateBtn' style='right:190px' onclick=\"location.href='staff_index.php?type=orders_by_date&span=months'\">Month</button>
-              <button class='staffDateBtn' style='right:0px' onclick=\"location.href='staff_index.php?type=orders_by_date&span=years'\">Year</button>
+              <button class=$class1 style='left:0px' onclick=\"location.href='staff_index.php?type=orders_by_date&span=weeks'\">Week</button>
+              <button class=$class2 style='right:190px' onclick=\"location.href='staff_index.php?type=orders_by_date&span=months'\">Month</button>
+              <button class=$class3 style='right:0px' onclick=\"location.href='staff_index.php?type=orders_by_date&span=years'\">Year</button>
             </div>";
       
       echo'</div>';

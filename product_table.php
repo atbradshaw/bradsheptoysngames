@@ -7,8 +7,17 @@ function searchProducts($field, $prod){
 
   $sql;
 
-      $prod = '%' . $prod . '%';
-      $sql = "SELECT pname,price,stock,pid,promo_rate FROM Product WHERE $field LIKE '$prod'"; 
+  // format query
+  $prod = trim(str_replace("+"," ",$prod));
+
+  // if query key is empty or all spaces
+  if(ctype_space($prod) or $prod==''){
+    $sql = "SELECT pname,price,stock,pid,promo_rate FROM Product"; 
+  }
+  else {
+    $prod = '%' . $prod . '%';
+    $sql = "SELECT pname,price,stock,pid,promo_rate FROM Product WHERE $field LIKE '$prod'"; 
+  }
 
   $result = mysqli_query($mysqli,$sql);
 
@@ -19,8 +28,7 @@ function searchProducts($field, $prod){
       return 0;
   }
 
-  // show Customer table
-  
+  // show Customer table  
   echo "<table class=\"table-prod\" cellspacing=\"0\" cellpadding=\"2\">";
   $fieldNames = mysqli_fetch_fields($result);
 
@@ -30,13 +38,13 @@ function searchProducts($field, $prod){
     echo" <th> In Stock </th>";
     echo" <th> PID </th>";
     if(isset($_SESSION['user_type'])){
-      echo" <th> Buy </th>";
+      echo" <th> Add to Cart</th>";
     }
   echo "</tr>";
 
   while($row = mysqli_fetch_assoc($result)) {
     echo "<tr>";
-    $act_price = round($row['price'] * $row['promo_rate'],2);
+    $act_price = round($row['price'] * (1 - $row['promo_rate']),2);
     echo "<td> {$row['pname']} </td>";
     echo "<td> $act_price </td>";
     echo "<td> {$row['stock']} </td>";

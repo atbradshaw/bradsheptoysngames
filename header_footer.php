@@ -10,7 +10,7 @@ function createHeader($type){
 
 	// logo 
 	echo '<div class="logo"> 
-			<img src="imgs/brandon_pic.jpg" alt="Mountain View" height="40" width="40">
+			<img src="logo_mini.png" alt="Mountain View" height="40" width="72">
 		 </div>';
 
 	// log in form
@@ -23,7 +23,7 @@ function createHeader($type){
 	                <input type="text" class="inputs" style="position:fixed; right:360px; top:12px" placeholder="User Name" name="uname">
 	                <input type="text" class="inputs" style="position:fixed; right:130px; top:12px" placeholder="Password" name="pword">
 
-	                <button type="submit" class="logInBtn" style="width:120px; position:fixed; right:0px">Sign In</button>
+	                <button type="submit" class="logInBtn" style="width:125px; position:fixed; right:0px">Sign In</button>
             	</fieldset>
           	  </form>
           	  </div>';
@@ -36,7 +36,7 @@ function createHeader($type){
         $cart_cnt = $_SESSION['cart_cnt'];
 
     	echo '<div class="login-form" style="width:400px">
-    			<button type="submit" class="logOutBtn" style="width:120px; border-radius: 0px" onclick="location.href=\'logout.php\'">Sign Out</button>
+    			<button type="submit" class="logOutBtn" style="width:125px; border-radius: 0px" onclick="location.href=\'logout.php\'">Sign Out</button>
     			<button type="submit" class="showCartBtn" onclick="location.href=\'show_cart.php\'">Cart</button>
     			<div class="cartItemCnt">';
                 echo "$cart_cnt";

@@ -14,6 +14,24 @@ require_once('database_connect.php');
   <!-- container -->
   <div class='container'>
 
+  <!-- Redirections -->
+  <?php
+    // not logged in
+    if (!isset($_SESSION['user_type'])){
+      echo"<script>location.href='index.php'</script>";
+    }
+
+    // not a customer
+    if (isset($_SESSION['user_type']) and !( $_SESSION['user_type'] == 'customer')){
+      if ($_SESSION['user_type'] == 'staff' or $_SESSION['user_type'] == 'manager'){
+        echo"<script>location.href='staff_index.php'</script>";
+      }
+      else {
+        echo"<script>location.href='index.php'</script>";
+      }
+    }
+  ?>
+
     <!-- Add to Order -->
     <?php
       if(isset($_GET['pid']) and isset($_GET['quant'])){
@@ -43,18 +61,18 @@ require_once('database_connect.php');
 
     <!-- Continue Shopping Button -->
     <div>
-        <button class="signUpBtn" onclick="location.href='index.php'">Contiue Shopping</button>
+        <button class="contShopBtn" onclick="location.href='index.php'">Continue Shopping</button>
     </div>
 
     <!-- Shopping Cart Heading -->
-    <div class="bar" style="height:100px; background:#ff00ff;">
-      <div class="box" style="font-size:50px; top:20px; width:1000px; background:#000000">
+    <div class="bar" style="height:100px; background:#114E77;">
+      <div class="box" style="font-size:50px; top:20px; width:1000px;">
       Shopping Cart
       </div>
     </div>
 
     <!-- Spacer -->
-    <div class="bar" style="height:50px; background:#0f00ff;">
+    <div class="bar" style="height:50px; ">
     </div>
 
 
@@ -62,37 +80,37 @@ require_once('database_connect.php');
     <div class="bar">
       <?php
           	if(!showCart()){
-          		echo '<div class="table-prod"> <div class="font" style="height:100px; font-size:20px; top:40px"> Cart Is Empty </div></div>';
+          		echo '<div class="table-prod" > <div class="font" style="height:100px; font-size:20px; top:40px;"> No Items In Cart </div></div>';
           	}
       ?>
     </div>
 
     <!-- Spacer -->
-    <div class="bar" style="height:50px; background:#ff0000;">
+    <div class="bar" style="height:50px; ">
     </div>
 
     <!-- Orders Heading -->
-    <div class="bar" style="height:100px; background:#ff00ff;">
-      <div class="box" style="font-size:50px; top:20px; width:1000px; background:#000000">
+    <div class="bar" style="height:100px; background:#114E77;">
+      <div class="box" style="font-size:50px; top:20px; width:1000px;">
       Orders
       </div>
     </div>
 
     <!-- Spacer -->
-    <div class="bar" style="height:50px; background:#00ff00;">
+    <div class="bar" style="height:50px; ">
     </div>
 
     <!-- Orders -->
     <div class="bar">
     <?php
     	if(!showOrder()){
-        	echo '<div class="table-prod"> <div class="font" style="height:100px; font-size:20px; top:40px"> No Orders </div></div>';
+        	echo '<div class="table-prod"> <div class="font" style="height:100px; font-size:20px; top:40px;"> No Orders </div></div>';
         }
     ?>
   </div>
 
   <!-- Spacer -->
-  <div class="bar" style="height:150px; background:#00ff00;">
+  <div class="bar" style="height:150px;">
   </div>
 
    <?php
