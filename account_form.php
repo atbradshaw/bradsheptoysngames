@@ -79,14 +79,14 @@
               <div class="box" style="font-size:20px; color:#CCC; top:-50px; width:700px;"> 
               Error Creating Account
                </div>
-            </div>
-
-             <div class="bar" style="height:120px; background:#ffffff"> 
             </div>';
       unset($_SESSION['error']);
     }
 ?>
 
+
+             <div class="bar" style="height:120px; background:#ffffff"> 
+            </div>
   <!-- footer -->
   <?php
     addFooter();
