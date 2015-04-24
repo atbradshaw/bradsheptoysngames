@@ -113,7 +113,7 @@ function showCart(){
 
     $pid = $row['pid'];
     $quant = $row['count'];
-  	echo" <button  class= 'tableAddBtn' onClick='location.href=\"?pid=$pid&quant=$quant\"' >Add</button>"; 
+  	echo" <button  class= 'tableAddBtn' onClick='location.href=\"?pid=$pid&quant=$quant\"' >Buy</button>"; 
   	echo" <button  class= 'tableDeleteBtn' onClick='location.href=\"?remove=$pid&quant=$quant\"' >Remove</button>"; 
   	echo"</td>";
 
