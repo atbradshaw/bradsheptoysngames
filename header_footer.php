@@ -21,7 +21,7 @@ function createHeader($type){
         		<form class="login-form" action="customer_login.php" method="get">
             	<fieldset>
 	                <input type="text" class="inputs" style="position:fixed; right:360px; top:12px" placeholder="User Name" name="uname">
-	                <input type="text" class="inputs" style="position:fixed; right:130px; top:12px" placeholder="Password" name="pword">
+	                <input type="password" class="inputs" style="position:fixed; right:130px; top:12px" placeholder="Password" name="pword">
 
 	                <button type="submit" class="logInBtn" style="width:125px; position:fixed; right:0px">Sign In</button>
             	</fieldset>
